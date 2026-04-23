@@ -1,3 +1,5 @@
+import os
+
 from ultralytics import YOLO
 
 # Inisialisasi model dari file konfigurasi arsitektur YAML
