@@ -1,33 +1,19 @@
 from ultralytics import YOLO
-import os
 
-# checkpointing
-def save_checkpoint(trainer):
-    epoch = trainer.epoch + 1
-    save_epochs = {1, 25, 50, 75, 100}  # epoch
-    if epoch in save_epochs:
-        ckpt_dir = os.path.join(trainer.save_dir, "checkpoints")
-        os.makedirs(ckpt_dir, exist_ok=True)
-        ckpt_path = os.path.join(ckpt_dir, f"epoch_{epoch}.pt")
-        trainer.model[0].save(ckpt_path)
-        print(f"\n✅ Checkpoint disimpan: {ckpt_path}")
+# Inisialisasi model dari file konfigurasi arsitektur YAML
+model = YOLO("ultralytics/cfg/models/11/yolo11.yaml")
 
-if __name__ == "__main__":
-    # model
-    model = YOLO("ultralytics/cfg/models/11/yolo11mod.yaml")
+# Memulai proses pelatihan dengan parameter dari paper referensi
+model.train(
+    data="data.yaml",         # Ganti dengan path ke file dataset YAML kamu
+    epochs=60,                # Jumlah epoch
+    imgsz=640,                # Resolusi gambar input
+    batch=16,                 # Ukuran batch
+    optimizer="Adam",         # Optimizer
+    lr0=0.001,                # Initial learning rate
+    device=0,                 # Gunakan GPU 0
+    project="yolo11_project", # Direktori utama penyimpanan hasil
+    name="train_baseline"     # Nama sub-direktori run ini
+)
 
-    # callback
-    model.add_callback("on_train_epoch_end", save_checkpoint)
-
-    # training
-    model.train(
-        data="D:/TATATA/halo/dataset.yaml",
-        epochs=100,
-        imgsz=480,
-        batch=2,
-        workers=2,   # ubah ke 0 jika debugging di Windows
-        device=0,
-        project="D:/TATATA/halo/runs",
-        name="yolo11mod_ripeness",
-        save=True,   # tetap simpan best.pt & last.pt bawaan
-    )
+print("Pelatihan selesai!")
