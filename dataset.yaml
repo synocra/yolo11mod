@@ -1,25 +1,12 @@
-path: /content/datasets/coco8  # Ultralytics akan mendownload coco8 sebagai contoh cepat
-train: images/train
-val: images/val
+path: /content/final_dataset
+
+train: train/images
+val: val/images
 
 names:
-  0: bicycle
-  1: car
-  2: motorcycle
-  3: airplane
-  4: bus
-  5: train
-  6: truck
-  7: boat
-  8: traffic light
-  9: fire hydrant
-  10: stop sign
-  11: parking meter
-  12: bench
-  13: bird
-  14: cat
-  15: dog
-  16: horse
-  17: sheep
-  18: cow
-  19: elephant
+  0: deformation
+  1: obstacle
+  2: rupture
+  3: disconnect
+  4: misalignment
+  5: deposition
