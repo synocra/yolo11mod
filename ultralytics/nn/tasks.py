@@ -72,7 +72,7 @@ from ultralytics.nn.modules import (
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
-from ultralytics.ultralytics.utils.losscustom import (
+from ultralytics.utils.losscustom import (
     E2EDetectLoss,
     v8ClassificationLoss,
     v8DetectionLoss,
