@@ -72,7 +72,7 @@ from ultralytics.nn.modules import (
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
-from ultralytics.utils.loss import (
+from ultralytics.ultralytics.utils.losscustom import (
     E2EDetectLoss,
     v8ClassificationLoss,
     v8DetectionLoss,
@@ -1224,7 +1224,7 @@ class YOLOEModel(DetectionModel):
             preds (torch.Tensor | list[torch.Tensor], optional): Predictions.
         """
         if not hasattr(self, "criterion"):
-            from ultralytics.utils.loss import TVPDetectLoss
+            from ultralytics.ultralytics.utils.losscustom import TVPDetectLoss
 
             visual_prompt = batch.get("visuals", None) is not None  # TODO
             self.criterion = TVPDetectLoss(self) if visual_prompt else self.init_criterion()
@@ -1272,7 +1272,7 @@ class YOLOESegModel(YOLOEModel, SegmentationModel):
             preds (torch.Tensor | list[torch.Tensor], optional): Predictions.
         """
         if not hasattr(self, "criterion"):
-            from ultralytics.utils.loss import TVPSegmentLoss
+            from ultralytics.ultralytics.utils.losscustom import TVPSegmentLoss
 
             visual_prompt = batch.get("visuals", None) is not None  # TODO
             self.criterion = TVPSegmentLoss(self) if visual_prompt else self.init_criterion()

@@ -1,18 +1,25 @@
-# YOLOv11 Dataset Configuration (for Colab)
-path: /content/ta/dataset  # root folder dataset di Colab
+path: /content/datasets/coco8  # Ultralytics akan mendownload coco8 sebagai contoh cepat
+train: images/train
+val: images/val
 
-train: train/images
-val: valid/images
-test: test/images  # opsional, bisa dihapus jika tidak ada
-
-# Jumlah kelas
-nc: 6
-
-# Nama kelas
 names:
-  0: ripe-banana
-  1: ripe-papaya
-  2: unripe-papaya
-  3: ripe-tomato
-  4: unripe-banana
-  5: unripe-tomato
+  0: bicycle
+  1: car
+  2: motorcycle
+  3: airplane
+  4: bus
+  5: train
+  6: truck
+  7: boat
+  8: traffic light
+  9: fire hydrant
+  10: stop sign
+  11: parking meter
+  12: bench
+  13: bird
+  14: cat
+  15: dog
+  16: horse
+  17: sheep
+  18: cow
+  19: elephant
